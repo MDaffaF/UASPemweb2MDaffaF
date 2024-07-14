@@ -10,7 +10,7 @@
     <style>
         body, html {
             height: 100%;
-            background-color: #f0f0f0; /* Ubah warna latar belakang */
+            background-color: #f0f0f0;
         }
         .container-login {
             display: flex;
@@ -20,7 +20,7 @@
             height: 100vh;
         }
         .login-form {
-            background-color: #ffffff; /* Ubah warna background container */
+            background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
@@ -65,7 +65,7 @@
 <script>
     $(document).ready(function() {
         $('#loginForm').on('submit', function(e) {
-            e.preventDefault(); // Prevent the default form submission
+            e.preventDefault();
 
             $.ajax({
                 url: "{{ route('login') }}",

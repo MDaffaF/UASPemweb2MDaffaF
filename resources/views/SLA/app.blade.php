@@ -25,9 +25,9 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-            max-width: 1200px; /* Perluas kontainer */
+            max-width: 1200px; 
             width: 100%;
-            overflow-x: auto; /* Berikan kemampuan scroll horizontal jika konten melebihi lebar kontainer */
+            overflow-x: auto; 
         }
         .navbar {
             margin-bottom: 20px;
@@ -38,7 +38,7 @@
         th, td {
             text-align: center;
             vertical-align: middle;
-            white-space: nowrap; /* Agar teks tidak mematahkan baris */
+            white-space: nowrap; 
             overflow: hidden;
             text-overflow: ellipsis;
         }
