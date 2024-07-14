@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Menu</title>
+    <title>SLA</title>
+    <link rel="shortcut icon" href="{{ asset('logo.png') }}" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <style>
@@ -60,7 +61,7 @@
     <div class="container-menu">
         <div class="menu-content">
             <h1 class="text-center">SLA</h1>
-            <a class="btn btn-primary" href="{{ route('sla.create') }}">Tambah Data</a>
+            <a class="btn btn-primary" href="{{ route('sla.create') }}">Tambah</a>
             <div class="table-responsive mt-3">
                 <table class="table table-bordered table-striped">
                     <thead class="table-dark">

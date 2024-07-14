@@ -1,5 +1,6 @@
 @extends('sla.app')
 
+@section('title', 'Edit Data')
 @section('content')
 <div class="container">
     <h2>Edit Data SLA</h2>
