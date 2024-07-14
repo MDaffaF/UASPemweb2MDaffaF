@@ -13,44 +13,44 @@ class SlaController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // Validasi data input dari formulir
-        $request->validate([
-            'tanggal' => 'required|date',
-            'daya_tx' => 'required',
-            'keterangan_daya_tx' => '',
-            'refleksi_tx' => '',
-            'keterangan_refleksi_tx' => '',
-            'cn_signal_ird' => 'required',
-            'keterangan_cn_signal_ird' => 'required',
-            'eb_no_ird' => 'required',
-            'keterangan_eb_no_ird' => 'required',
-            'tegangan_rst' => 'required',
-            'keterangan_tegangan_rst' => '',
-            'jam_siaran' => 'required',
-            'keterangan_jam_siaran' => '',
-        ]);
+{
+    // Validasi data input dari formulir
+    $request->validate([
+        'tanggal' => 'required|date',
+        'daya_tx' => 'required',
+        'keterangan_daya_tx' => '',
+        'refleksi_tx' => '',
+        'keterangan_refleksi_tx' => '',
+        'cn_signal_ird' => 'required',
+        'keterangan_cn_signal_ird' => '',
+        'eb_no_ird' => 'required',
+        'keterangan_eb_no_ird' => '',
+        'tegangan_rst' => 'required',
+        'keterangan_tegangan_rst' => '',
+        'jam_siaran' => 'required',
+        'keterangan_jam_siaran' => '',
+    ]);
 
-        // Simpan data ke dalam database
-        Sla::create([
-            'tanggal' => $request->tanggal,
-            'daya_tx' => $request->daya_tx,
-            'keterangan_daya_tx' => $request->keterangan_daya_tx,
-            'refleksi_tx' => $request->refleksi_tx,
-            'keterangan_refleksi_tx' => $request->keterangan_refleksi_tx,
-            'cn_signal_ird' => $request->cn_signal_ird,
-            'keterangan_cn_signal_ird' => $request->keterangan_cn_signal_ird,
-            'eb_no_ird' => $request->eb_no_ird,
-            'keterangan_eb_no_ird' => $request->keterangan_eb_no_ird,
-            'tegangan_rst' => $request->tegangan_rst,
-            'keterangan_tegangan_rst' => $request->keterangan_tegangan_rst,
-            'jam_siaran' => $request->jam_siaran,
-            'keterangan_jam_siaran' => $request->keterangan_jam_siaran,
-        ]);
+    // Simpan data SLA ke database
+    $sla = new Sla([
+        'tanggal' => $request->tanggal,
+        'daya_tx' => $request->daya_tx,
+        'keterangan_daya_tx' => $request->keterangan_daya_tx,
+        'refleksi_tx' => $request->refleksi_tx,
+        'keterangan_refleksi_tx' => $request->keterangan_refleksi_tx,
+        'cn_signal_ird' => $request->cn_signal_ird,
+        'keterangan_cn_signal_ird' => $request->keterangan_cn_signal_ird,
+        'eb_no_ird' => $request->eb_no_ird,
+        'keterangan_eb_no_ird' => $request->keterangan_eb_no_ird,
+        'tegangan_rst' => $request->tegangan_rst,
+        'keterangan_tegangan_rst' => $request->keterangan_tegangan_rst,
+        'jam_siaran' => $request->jam_siaran,
+        'keterangan_jam_siaran' => $request->keterangan_jam_siaran,
+    ]);
+    $sla->save();
 
-        // Redirect ke halaman index SLA dengan pesan sukses
-        return redirect()->route('sla.create')->with('success', 'Data SLA berhasil diperbarui.');
-    }
+    return redirect()->route('sla.create')->with('success', 'Data SLA berhasil ditambahkan.');
+}
 
     public function edit($id) {
         $sla = Sla::findOrFail($id);
@@ -96,14 +96,16 @@ class SlaController extends Controller
         'jam_siaran' => $request->jam_siaran,
         'keterangan_jam_siaran' => $request->keterangan_jam_siaran,
     ]);
+    $sla->save();
 
     // Redirect ke halaman edit SLA dengan pesan sukses
     return redirect()->route('sla.edit', ['id' => $id])->with('success', 'Data SLA berhasil diperbarui.');
 }
-    public function destroy($id){
+public function destroy($id)
+{
     $sla = Sla::findOrFail($id);
     $sla->delete();
+
     return redirect()->route('menu')->with('success', 'Data SLA berhasil dihapus.');
 }
-
 }

@@ -3,6 +3,7 @@
 <head>
     <title>Menu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <style>
         body, html {
             height: 100%;
@@ -78,7 +79,7 @@
                             <th scope="col">Keterangan</th>
                             <th scope="col">Jam Siaran</th>
                             <th scope="col">Keterangan</th>
-                            <th scope="col">Aksi</th> <!-- Kolom tambahan untuk aksi edit -->
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -99,12 +100,14 @@
                             <td>{{ $sla->jam_siaran }}</td>
                             <td>{{ $sla->keterangan_jam_siaran }}</td>
                             <td>
-                            <a href="{{ route('sla.edit', ['id' => $sla->id]) }}" class="btn btn-sm btn-primary">Edit</a>
-                            <form id="delete-form-{{ $sla->id }}" action="{{ route('sla.destroy', ['id' => $sla->id]) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                            </form>
+                                <a href="{{ route('sla.edit', ['id' => $sla->id]) }}" class="btn btn-sm btn-primary">Edit</a>
+
+                                <button class="btn btn-sm btn-danger" onclick="confirmDelete('{{ $sla->id }}')">Delete</button>
+
+                                <form id="delete-form-{{ $sla->id }}" action="{{ route('sla.destroy', ['id' => $sla->id]) }}" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -114,18 +117,30 @@
         </div>
     </div>
 
-    <script>
-        function deleteData(id) {
-            if (confirm('Apakah Anda yakin untuk menghapus data ini?')) {
-                var form = document.getElementById('delete-form-' + id);
-                if (form) {
-                    form.submit();
-                } else {
-                    console.error('Form dengan ID delete-form-' + id + ' tidak ditemukan.');
-                }
-            }
-        }
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            text: "Data yang sudah dihapus tidak dapat dikembalikan ! ",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, hapus saja',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+                Swal.fire({
+                    title: 'Terhapus!',
+                    text: 'Data telah berhasil dihapus.',
+                    icon: 'success'
+                });
+            }
+        });
+    }
+</script>
 </body>
 </html>

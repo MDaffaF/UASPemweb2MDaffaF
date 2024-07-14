@@ -72,7 +72,7 @@
             <input type="text" class="form-control" id="keterangan_jam_siaran" name="keterangan_jam_siaran" value="{{ $sla->keterangan_jam_siaran }}">
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3">Simpan Perubahan</button>
+        <button type="submit" class="btn btn-primary mt-3">Update</button>
         <a href="{{ route('menu') }}" class="btn btn-secondary mt-3">Menu</a>
     </form>
 </div>

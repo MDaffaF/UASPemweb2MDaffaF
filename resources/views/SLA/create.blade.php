@@ -58,8 +58,25 @@
             <input type="text" class="form-control" id="keterangan_jam_siaran" name="keterangan_jam_siaran">
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+        <button type="submit" class="btn btn-primary mt-3">Tambah</button>
         <a href="{{ route('menu') }}" class="btn btn-secondary mt-3">Menu</a>
     </form>
 </div>
+<script>
+    document.getElementById('addSlaForm').addEventListener('submit', function() {
+        document.getElementById('tanggal').value = '';
+        document.getElementById('daya_tx').value = '';
+        document.getElementById('keterangan_daya_tx').value = '';
+        document.getElementById('refleksi_tx').value = '';
+        document.getElementById('keterangan_refleksi_tx').value = '';
+        document.getElementById('cn_signal_ird').value = '';
+        document.getElementById('keterangan_cn_signal_ird').value = '';
+        document.getElementById('eb_no_ird').value = '';
+        document.getElementById('keterangan_eb_no_ird').value = '';
+        document.getElementById('tegangan_rst').value = '';
+        document.getElementById('keterangan_tegangan_rst').value = '';
+        document.getElementById('jam_siaran').value = '';
+        document.getElementById('keterangan_jam_siaran').value = '';
+    });
+</script>
 @endsection
