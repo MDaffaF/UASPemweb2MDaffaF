@@ -108,7 +108,7 @@
                             <td>{{ $sla->keterangan_jam_siaran }}</td>
                             <td>
                                 <a href="{{ route('sla.edit', ['id' => $sla->id]) }}" class="btn btn-sm btn-primary">Edit</a>
-
+                                <a href="{{ route('sla.exportPdf', ['id' => $sla->id]) }}" class="btn btn-sm btn-warning">Cetak PDF</a>
                                 <button class="btn btn-sm btn-danger" onclick="confirmDelete('{{ $sla->id }}')">Delete</button>
 
                                 <form id="delete-form-{{ $sla->id }}" action="{{ route('sla.destroy', ['id' => $sla->id]) }}" method="POST" style="display: none;">

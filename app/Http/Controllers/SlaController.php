@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PDF;
 use App\Models\Sla;
 
 class SlaController extends Controller
@@ -132,4 +133,12 @@ public function index(Request $request)
 
     return view('sla.menu', compact('slaData'));
 }
+public function generatePDF($id)
+    {
+        $slaData = Sla::findOrFail($id); // Mengambil data berdasarkan ID
+
+        $pdf = PDF::loadView('sla.pdf', compact('slaData'))->setPaper('a4', 'landscape');
+
+        return $pdf->download('SLA_Report_' . $slaData->id . '.pdf');
+    }
 }

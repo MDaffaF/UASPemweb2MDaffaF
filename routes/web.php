@@ -5,10 +5,12 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SlaController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/sla', [SLAController::class, 'index'])->name('sla.index');
+// Route untuk halaman utama SLA
+Route::get('/sla', [SlaController::class, 'index'])->name('sla.index');
+
 // Route untuk halaman login
-Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('login', [LoginController::class, 'authenticate']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
 
 // Route untuk halaman menu utama setelah login
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
@@ -22,7 +24,8 @@ Route::prefix('sla')->group(function () {
     Route::post('/store', [SlaController::class, 'store'])->name('sla.store');
     Route::get('/edit/{id}', [SlaController::class, 'edit'])->name('sla.edit');
     Route::put('/update/{id}', [SlaController::class, 'update'])->name('sla.update');
-    Route::delete('/sla/{id}', [SlaController::class, 'destroy'])->name('sla.destroy');
-
-
+    Route::delete('/destroy/{id}', [SlaController::class, 'destroy'])->name('sla.destroy');
 });
+
+// Route untuk Export PDF
+Route::get('/sla/export-pdf/{id}', [SlaController::class, 'generatePDF'])->name('sla.exportPdf');
