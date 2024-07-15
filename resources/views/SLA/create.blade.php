@@ -57,9 +57,10 @@
             <label for="keterangan_jam_siaran">Keterangan Jam Siaran</label>
             <input type="text" class="form-control" id="keterangan_jam_siaran" name="keterangan_jam_siaran">
         </div>
-
-        <button type="submit" class="btn btn-primary mt-3">Tambah</button>
-        <a href="{{ route('menu') }}" class="btn btn-secondary mt-3">Menu</a>
+        <button type="submit" class="btn btn-primary mt-3">
+        <i class="fas fa-plus"> Tambah</i></button>
+        <a href="{{ route('menu') }}" class="btn btn-secondary mt-3">
+        <i class="fas fa-bars"></i> Menu</a>
     </form>
 </div>
 <script>

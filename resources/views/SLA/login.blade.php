@@ -61,7 +61,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
     $(document).ready(function() {
         $('#loginForm').on('submit', function(e) {
@@ -75,7 +74,7 @@
                     Swal.fire({
                         icon: 'success',
                         title: 'Login Berhasil',
-                        text: response.message
+                        text: response.message + response.user.name
                     }).then((result) => {
                         if (result.isConfirmed) {
                             window.location.href = "{{ route('menu') }}";

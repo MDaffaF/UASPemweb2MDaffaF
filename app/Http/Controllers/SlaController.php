@@ -135,9 +135,10 @@ public function index(Request $request)
 }
 public function generatePDF($id)
     {
-        $slaData = Sla::findOrFail($id); // Mengambil data berdasarkan ID
+        $slaData = Sla::findOrFail($id);
+        $userData = auth()->user();
 
-        $pdf = PDF::loadView('sla.pdf', compact('slaData'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('sla.pdf', compact('slaData', 'userData'))->setPaper('a4', 'landscape');
 
         return $pdf->download('SLA_Report_' . $slaData->id . '.pdf');
     }

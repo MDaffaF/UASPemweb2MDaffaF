@@ -16,17 +16,16 @@ class LoginController extends Controller
 {
     $credentials = $request->only('email', 'password');
 
-    $user = \App\Models\User::where('email', $credentials['email'])->first();
-    if (!$user) {
-        return response()->json(['message' => 'Email Salah!'], 401);
-    }
-
     if (!Auth::attempt($credentials)) {
-        return response()->json(['message' => 'Password Salah!'], 401);
+        return response()->json(['message' => 'Email atau Password Salah!'], 401);
     }
 
-    return response()->json(['message' => 'Anda berhasil login!']);
-    
+    $user = Auth::user();
+
+    return response()->json([
+        'message' => 'Selamat Bekerja ',
+        'user' => $user 
+    ]);
 }
 public function logout()
 {
