@@ -62,6 +62,12 @@
         <div class="menu-content">
             <h1 class="text-center">SLA</h1>
             <a class="btn btn-primary" href="{{ route('sla.create') }}">Tambah</a>
+            <form class="mt-3" method="GET" action="{{ route('sla.index') }}">
+                <div class="input-group mb-3">
+                    <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan Tanggal, Daya TX, dll" value="{{ request()->get('search') }}">
+                    <button class="btn btn-primary" type="submit">Cari</button>
+                </div>
+            </form>
             <div class="table-responsive mt-3">
                 <table class="table table-bordered table-striped">
                     <thead class="table-dark">

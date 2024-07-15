@@ -5,6 +5,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SlaController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/sla', [SLAController::class, 'index'])->name('sla.index');
 // Route untuk halaman login
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'authenticate']);

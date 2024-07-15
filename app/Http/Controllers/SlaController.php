@@ -108,4 +108,28 @@ public function destroy($id)
 
     return redirect()->route('menu')->with('success', 'Data SLA berhasil dihapus.');
 }
+public function index(Request $request)
+{
+    $search = $request->input('search');
+
+    $slaData = SLA::query()
+        ->when($search, function ($query, $search) {
+            return $query->where('tanggal', 'like', "%{$search}%")
+                ->orWhere('daya_tx', 'like', "%{$search}%")
+                ->orWhere('keterangan_daya_tx', 'like', "%{$search}%")
+                ->orWhere('refleksi_tx', 'like', "%{$search}%")
+                ->orWhere('keterangan_refleksi_tx', 'like', "%{$search}%")
+                ->orWhere('cn_signal_ird', 'like', "%{$search}%")
+                ->orWhere('keterangan_cn_signal_ird', 'like', "%{$search}%")
+                ->orWhere('eb_no_ird', 'like', "%{$search}%")
+                ->orWhere('keterangan_eb_no_ird', 'like', "%{$search}%")
+                ->orWhere('tegangan_rst', 'like', "%{$search}%")
+                ->orWhere('keterangan_tegangan_rst', 'like', "%{$search}%")
+                ->orWhere('jam_siaran', 'like', "%{$search}%")
+                ->orWhere('keterangan_jam_siaran', 'like', "%{$search}%");
+        })
+        ->get();
+
+    return view('sla.menu', compact('slaData'));
+}
 }
