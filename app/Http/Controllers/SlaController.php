@@ -131,8 +131,16 @@ public function index(Request $request)
         })
         ->get();
 
-    return view('sla.menu', compact('slaData'));
-}
+        $dataNotFound = $slaData->isEmpty();
+
+        // Jika data tidak ditemukan, tampilkan SweetAlert
+        if ($dataNotFound) {
+            return view('sla.menu', compact('slaData', 'dataNotFound'))->with('error', 'Data tidak ditemukan.');
+        }
+    
+        // Jika data ditemukan, tampilkan halaman dengan data
+        return view('sla.menu', compact('slaData', 'dataNotFound'));
+    }
 public function generatePDF($id)
     {
         $slaData = Sla::findOrFail($id);

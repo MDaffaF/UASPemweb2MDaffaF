@@ -69,16 +69,16 @@
         <div class="menu-content">
             <h1 class="text-center">SLA</h1>
             <form class="mt-3" method="GET" action="{{ route('sla.index') }}">
-            <div class="input-group mb-3">
-                <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan Tanggal, Daya TX, dll" value="{{ request()->get('search') }}">
-                <button class="btn btn-primary" type="submit" style="margin-right: 5px;">
-                <i class="fas fa-search"> Cari </i>
+                <div class="input-group mb-3">
+                    <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan Tanggal, Daya TX, dll" value="{{ request()->get('search') }}">
+                    <button class="btn btn-primary" type="submit" style="margin-right: 5px;">
+                        <i class="fas fa-search"> Cari </i>
                     </button>
                     <a class="btn btn-primary" href="{{ route('sla.create') }}">
                         <i class="fas fa-plus"> Tambah</i>
                     </a>
-            </div>
-        </form>
+                </div>
+            </form>
             <div class="table-responsive mt-3">
                 <table class="table table-bordered table-striped">
                     <thead class="table-dark">
@@ -119,11 +119,14 @@
                             <td>{{ $sla->keterangan_jam_siaran }}</td>
                             <td>
                                 <a href="{{ route('sla.edit', ['id' => $sla->id]) }}" class="btn btn-sm btn-primary">
-                                <i class="fas fa-edit"> Edit</i></a>
+                                    <i class="fas fa-edit"> Edit</i>
+                                </a>
                                 <a href="{{ route('sla.exportPdf', ['id' => $sla->id]) }}" class="btn btn-sm btn-warning">
-                                <i class="fas fa-file-pdf"> Cetak</i></a>
+                                    <i class="fas fa-file-pdf"> Cetak</i>
+                                </a>
                                 <button class="btn btn-sm btn-danger" onclick="confirmDelete('{{ $sla->id }}')">
-                                <i class="fas fa-trash-alt"> Hapus</i></button>
+                                    <i class="fas fa-trash-alt"> Hapus</i>
+                                </button>
                                 <form id="delete-form-{{ $sla->id }}" action="{{ route('sla.destroy', ['id' => $sla->id]) }}" method="POST" style="display: none;">
                                     @csrf
                                     @method('DELETE')
@@ -147,27 +150,36 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-    function confirmDelete(id) {
+        @if ($dataNotFound)
         Swal.fire({
-            title: 'Apakah Anda yakin?',
-            text: "Data yang sudah dihapus tidak dapat dikembalikan ! ",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Ya, hapus saja',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('delete-form-' + id).submit();
-                Swal.fire({
-                    title: 'Terhapus!',
-                    text: 'Data telah berhasil dihapus.',
-                    icon: 'success'
-                });
-            }
+            title: 'Data tidak ditemukan ! ',
+            text: 'Data yang Anda cari tidak tersedia',
+            icon: 'error',
+            confirmButtonText: 'OK'
         });
-    }
-</script>
+        @endif
+
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Data yang sudah dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus saja',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + id).submit();
+                    Swal.fire({
+                        title: 'Terhapus!',
+                        text: 'Data telah berhasil dihapus.',
+                        icon: 'success'
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 </html>
