@@ -4,8 +4,8 @@
     <title>SLA</title>
     <link rel="shortcut icon" href="{{ asset('logo.png') }}" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
     <style>
         body, html {
             height: 100%;
@@ -23,7 +23,7 @@
             background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
             max-width: 1200px;
             width: 100%;
             overflow-x: auto;
@@ -136,6 +136,18 @@
                         @endforeach
                     </tbody>
                 </table>
+                @if($slaData->isEmpty())
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            Swal.fire({
+                                title: 'Data Tidak Ditemukan',
+                                text: 'Tidak ada data yang sesuai dengan pencarian Anda.',
+                                icon: 'info',
+                                confirmButtonText: 'OK'
+                            });
+                        });
+                    </script>
+                @endif
             </div>
         </div>
     </div>
@@ -148,35 +160,21 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
     <script>
-        @if ($dataNotFound)
-        Swal.fire({
-            title: 'Data tidak ditemukan ! ',
-            text: 'Data yang Anda cari tidak tersedia',
-            icon: 'error',
-            confirmButtonText: 'OK'
-        });
-        @endif
-
         function confirmDelete(id) {
             Swal.fire({
                 title: 'Apakah Anda yakin?',
                 text: "Data yang sudah dihapus tidak dapat dikembalikan!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Ya, hapus saja',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
                 cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
                     document.getElementById('delete-form-' + id).submit();
-                    Swal.fire({
-                        title: 'Terhapus!',
-                        text: 'Data telah berhasil dihapus.',
-                        icon: 'success'
-                    });
                 }
             });
         }

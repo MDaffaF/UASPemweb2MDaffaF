@@ -11,7 +11,7 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $slaData = Sla::all(); // Mengambil semua data dari tabel Sla
+        $slaData = Sla::all();
         
         return view('sla.menu', ['slaData' => $slaData]);
     }
