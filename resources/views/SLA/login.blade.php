@@ -11,14 +11,15 @@
     <style>
         body, html {
             height: 100%;
-            background-color: #f0f0f0;
+            background: url('backgroundlogin.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
         .container-login {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 80vh;
+            height: 100vh;
         }
         .login-form {
             background-color: #ffffff;
@@ -37,19 +38,17 @@
             height: auto;
         }
         footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 20vh;
+            margin-top: 20px;
+            text-align: center;
+        
         }
         .social-icons a {
             margin: 0 10px;
-            color: #000;
+            color: inherit; 
             text-decoration: none;
         }
         .social-icons a:hover {
-            color: #007bff;
+            color: #007bff; 
         }
     </style>
 </head>
@@ -63,27 +62,25 @@
         <form id="loginForm" method="POST">
             @csrf
             <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email address" required>
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Login</button>
             </div>
         </form>
+        <footer>
+            <p>&copy; 2024 TVRI Jawa Barat. <br> Muhammad Daffa Fikriawan</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/tvrijabar/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/LPPTVRIJABAR" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.tiktok.com/@tvri_jabar" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </footer>
     </div>
 </div>
-<footer>
-    <p>&copy; 2024 TVRI Jawa Barat. Muhammad Daffa Fikriawan</p>
-    <div class="social-icons">
-        <a href="https://www.instagram.com/tvrijabar/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/LPPTVRIJABAR" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.tiktok.com/@tvri_jabar" target="_blank"><i class="fab fa-tiktok"></i></a>
-    </div>
-</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
