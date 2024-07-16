@@ -41,6 +41,12 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+        }
     </style>
 </head>
 <body>
@@ -130,6 +136,13 @@
             </div>
         </div>
     </div>
+    <footer class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid justify-content-center">
+            <span class="navbar-text">
+                &copy; 2024 TVRI Jawa Barat. Muhammad Daffa Fikriawan
+            </span>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

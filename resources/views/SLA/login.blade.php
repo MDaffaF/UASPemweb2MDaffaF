@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="{{ asset('logo.png') }}" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body, html {
             height: 100%;
@@ -17,7 +18,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: 80vh;
         }
         .login-form {
             background-color: #ffffff;
@@ -34,6 +35,21 @@
         .login-logo img {
             max-width: 150px;
             height: auto;
+        }
+        footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 20vh;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: #000;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            color: #007bff;
         }
     </style>
 </head>
@@ -54,10 +70,20 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
         </form>
     </div>
 </div>
+<footer>
+    <p>&copy; 2024 TVRI Jawa Barat. Muhammad Daffa Fikriawan</p>
+    <div class="social-icons">
+        <a href="https://www.instagram.com/tvrijabar/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/LPPTVRIJABAR" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@tvri_jabar" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
