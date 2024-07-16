@@ -72,7 +72,7 @@
                 <div class="input-group mb-3">
                     <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan Tanggal, Daya TX, dll" value="{{ request()->get('search') }}">
                     <button class="btn btn-primary" type="submit" style="margin-right: 5px;">
-                        <i class="fas fa-search"> Cari </i>
+                        <i class="fas fa-search"> Cari</i>
                     </button>
                     <a class="btn btn-primary" href="{{ route('sla.create') }}">
                         <i class="fas fa-plus"> Tambah</i>
